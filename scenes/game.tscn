@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://degxfcvn01hh4"]
+
+[ext_resource type="Texture2D" uid="uid://fd75pg56n42f" path="res://icon.svg" id="1_qk35q"]
+[ext_resource type="PackedScene" uid="uid://d3evoctmavxfs" path="res://scenes/paddle.tscn" id="2_hfi0i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3r73"]
+albedo_texture = ExtResource("1_qk35q")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d8e2m"]
+material = SubResource("StandardMaterial3D_f3r73")
+size = Vector2(50, 50)
+
+[node name="Game" type="Node"]
+
+[node name="Background" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_d8e2m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 32, 0)
+
+[node name="Paddle" parent="." instance=ExtResource("2_hfi0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 0)
