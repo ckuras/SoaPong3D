@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://degxfcvn01hh4"]
+[gd_scene load_steps=6 format=3 uid="uid://degxfcvn01hh4"]
 
 [ext_resource type="Texture2D" uid="uid://bmfscfwv2pfah" path="res://nato.png" id="1_wo3j4"]
 [ext_resource type="PackedScene" uid="uid://d3evoctmavxfs" path="res://scenes/paddle.tscn" id="2_hfi0i"]
+[ext_resource type="PackedScene" uid="uid://d34k57tmp2gj8" path="res://scenes/ball.tscn" id="3_466d1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3r73"]
 albedo_texture = ExtResource("1_wo3j4")
@@ -28,3 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 0)
 [node name="PaddleP2" parent="." instance=ExtResource("2_hfi0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2, 0)
 player = 1
+
+[node name="Ball" parent="." instance=ExtResource("3_466d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
