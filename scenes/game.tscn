@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://degxfcvn01hh4"]
 
-[ext_resource type="Texture2D" uid="uid://fd75pg56n42f" path="res://icon.svg" id="1_qk35q"]
+[ext_resource type="Texture2D" uid="uid://bmfscfwv2pfah" path="res://nato.png" id="1_wo3j4"]
 [ext_resource type="PackedScene" uid="uid://d3evoctmavxfs" path="res://scenes/paddle.tscn" id="2_hfi0i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3r73"]
-albedo_texture = ExtResource("1_qk35q")
+albedo_texture = ExtResource("1_wo3j4")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d8e2m"]
 material = SubResource("StandardMaterial3D_f3r73")
