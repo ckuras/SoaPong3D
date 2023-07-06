@@ -1,11 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3evoctmavxfs"]
+[gd_scene load_steps=6 format=3 uid="uid://d3evoctmavxfs"]
 
 [ext_resource type="Script" path="res://scripts/paddle.gd" id="1_lwouh"]
+[ext_resource type="Texture2D" uid="uid://bmfscfwv2pfah" path="res://nato.png" id="2_k2rpo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b13jx"]
 size = Vector3(1, 1, 4)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddm6j"]
+albedo_texture = ExtResource("2_k2rpo")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+grow_amount = 1.407
+
 [sub_resource type="BoxMesh" id="BoxMesh_r1gh3"]
+material = SubResource("StandardMaterial3D_ddm6j")
 size = Vector3(1, 1, 4)
 
 [node name="Paddle" type="CharacterBody3D"]
