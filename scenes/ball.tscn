@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d34k57tmp2gj8"]
+[gd_scene load_steps=14 format=3 uid="uid://d34k57tmp2gj8"]
 
 [ext_resource type="Script" path="res://scripts/ball.gd" id="1_fdun0"]
 [ext_resource type="Texture2D" uid="uid://bmfscfwv2pfah" path="res://nato.png" id="2_1g11j"]
+[ext_resource type="Texture2D" uid="uid://c2x5yyoeq7fvu" path="res://assets/particles/smoke_10.png" id="3_k3278"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6nfpo"]
 
@@ -10,6 +11,33 @@ albedo_texture = ExtResource("2_1g11j")
 
 [sub_resource type="SphereMesh" id="SphereMesh_a1bpp"]
 material = SubResource("StandardMaterial3D_4l24i")
+
+[sub_resource type="Gradient" id="Gradient_4oih0"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_68mya"]
+gradient = SubResource("Gradient_4oih0")
+
+[sub_resource type="Curve" id="Curve_o4tba"]
+_data = [Vector2(0, 0.336842), 0.0, 0.0, 0, 0, Vector2(0.428571, 0.757895), 0.993548, 0.993548, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6wtke"]
+curve = SubResource("Curve_o4tba")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o58wn"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_6wtke")
+color_ramp = SubResource("GradientTexture1D_68mya")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qchhf"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_k3278")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0x63d"]
+material = SubResource("StandardMaterial3D_qchhf")
+orientation = 1
 
 [node name="Ball" type="StaticBody3D"]
 script = ExtResource("1_fdun0")
@@ -21,3 +49,9 @@ shape = SubResource("SphereShape3D_6nfpo")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("SphereMesh_a1bpp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 32
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_o58wn")
+draw_pass_1 = SubResource("QuadMesh_0x63d")
